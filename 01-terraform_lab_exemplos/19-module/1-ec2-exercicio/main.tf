@@ -4,5 +4,5 @@ provider "aws" {
 
 module "criar_instancia" {
   source = "./instancia"
-  nome = "Matheus"
+  nome = "deploy"
 }
