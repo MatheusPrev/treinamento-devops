@@ -6,38 +6,28 @@ resource "aws_vpc" "my_vpc" {
   }
 }
 
-resource "aws_subnet" "my_subnet" {
-  vpc_id            = aws_vpc.my_vpc.id
-  cidr_block        = "172.16.10.0/24"
-  availability_zone = "us-east-1a"
-
-  tags = {
-    Name = "tf-lab-danilo-subnet"
-  }
-}
-
-resource "aws_subnet" "my_subnet_b" {
+resource "aws_subnet" "my_subnet_1b" {
   vpc_id            = aws_vpc.my_vpc.id
   cidr_block        = "172.16.20.0/24"
-  availability_zone = "us-east-1b"
+  availability_zone = "sa-east-1b"
 
   tags = {
-    Name = "tf-lab-danilo-subnet_b"
+    Name = "tf-lab-danilo-subnet_1b"
   }
 }
 
-resource "aws_subnet" "my_subnet_c" {
+resource "aws_subnet" "my_subnet_1c" {
   vpc_id            = aws_vpc.my_vpc.id
   cidr_block        = "172.16.30.0/24"
-  availability_zone = "us-east-1c"
+  availability_zone = "sa-east-1c"
 
   tags = {
-    Name = "tf-lab-danilo-subnet_c"
+    Name = "tf-lab-danilo-subnet_1c"
   }
 }
 
 
-resource "aws_network_interface" "my_subnet" {
+resource "aws_network_interface" "my_subnet_1b" {
   subnet_id   = aws_subnet.my_subnet.id
   private_ips = ["172.16.10.101"] # IP definido para instancia
   # security_groups = ["${aws_security_group.allow_ssh1.id}"]
@@ -48,7 +38,7 @@ resource "aws_network_interface" "my_subnet" {
 }
 
 
-resource "aws_network_interface" "my_subnet_b" {
+resource "aws_network_interface" "my_subnet_1c" {
   subnet_id   = aws_subnet.my_subnet_b.id
   private_ips = ["172.16.20.100"] # IP definido para instancia
   # security_groups = ["${aws_security_group.allow_ssh1.id}"]
