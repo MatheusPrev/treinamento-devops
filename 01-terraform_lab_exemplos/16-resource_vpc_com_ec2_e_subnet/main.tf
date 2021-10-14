@@ -12,7 +12,7 @@ resource "aws_instance" "web" {
   }
 
   network_interface {
-    network_interface_id = aws_network_interface.my_subnet.id # vincula a subnet com ip fixo
+    network_interface_id = aws_network_interface.my_subnet_1b.id # vincula a subnet com ip fixo
     device_index         = 0 # DeviceIndex - The network interface's position in the attachment order. For example, the first attached network interface has a DeviceIndex of 0. 
   }
 }
@@ -26,7 +26,7 @@ resource "aws_instance" "web2" {
   }
 
   network_interface {
-    network_interface_id = aws_network_interface.my_subnet_b.id # vincula a subnet com ip fixo
+    network_interface_id = aws_network_interface.my_subnet_1c.id # vincula a subnet com ip fixo
     device_index         = 0
   }
 }
