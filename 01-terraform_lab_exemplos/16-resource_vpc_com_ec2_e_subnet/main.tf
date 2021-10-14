@@ -20,7 +20,7 @@ resource "aws_instance" "web" {
 resource "aws_instance" "web2" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
-  key_name      = "Itau_treinamento"
+  key_name      = "key_matheus_dev_ubunto"
   tags = {
     Name = "Maquina2 para testar VPC"
   }
