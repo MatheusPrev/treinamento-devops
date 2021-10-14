@@ -1,6 +1,6 @@
 terraform {
   backend "remote" {
-    organization = "didox"
+    organization = "mathpre"
 
     workspaces {
       name = "TerraformLabTreinamento"
