@@ -1,14 +1,14 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "sa-east-1"
 }
 
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.micro"
-  key_name      = "Itau_treinamento" # key chave publica cadastrada na AWS 
+  instance_type = "t2.micro"
+  key_name      = "key_matheus_dev_ubunto" # key chave publica cadastrada na AWS 
   # subnet_id        =  aws_subnet.my_subnet.id # vincula a subnet direto e gera o IP automático
   tags = {
-    Name = "Maquina para testar VPC"
+    Name = "Matheus maquina para testar VPC"
   }
 
   network_interface {
