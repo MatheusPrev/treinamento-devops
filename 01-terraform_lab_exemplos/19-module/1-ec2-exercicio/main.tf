@@ -8,5 +8,5 @@ module "criar_vpc" {
 
 module "criar_instancia" {
   source = "./instancia"
-  subnet_ids = module.criar_vpc.subnet_id
+  subnet_id = module.criar_vpc.subnet_id
 }
