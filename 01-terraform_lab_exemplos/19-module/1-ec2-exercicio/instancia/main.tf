@@ -7,7 +7,6 @@ resource "aws_instance" "web" {
   instance_type = "t2.micro"
   subnet_id     = "subnet-009732771798c000e"
   vpc_security_group_ids = ["${aws_security_group.permitir_ssh.id}"]
-  count         = "1"
   key_name      = "key_matheus_dev_ubunto"
   
   associate_public_ip_address = true
