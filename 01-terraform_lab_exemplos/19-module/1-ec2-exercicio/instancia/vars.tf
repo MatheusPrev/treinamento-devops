@@ -1,4 +1,3 @@
-variable "nome" {
+variable "subnet_id" {
   type = string
-  description = "Digite o nome da instancia"
 }
