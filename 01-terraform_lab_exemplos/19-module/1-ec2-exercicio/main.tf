@@ -4,10 +4,9 @@ provider "aws" {
 
 module "criar_vpc" {
   source = "./VPC"
-  #nome = "deploy"
 }
 
 module "criar_instancia" {
   source = "./instancia"
-  nome = "deploy"
+  subnet_ids = module.criar_vpc.subnet_id
 }
