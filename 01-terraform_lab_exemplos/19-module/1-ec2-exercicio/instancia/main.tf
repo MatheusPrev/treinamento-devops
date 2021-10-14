@@ -17,6 +17,6 @@ resource "aws_instance" "web" {
   }
     
   tags = {
-    Name = "ec2-matheus-deploy-${count.index}"
+    Name = "ec2-matheus-deploy-1"
   }
 }
