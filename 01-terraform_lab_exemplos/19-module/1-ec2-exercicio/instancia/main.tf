@@ -5,7 +5,8 @@ terraform {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
-  subnet_id     = "subnet-009732771798c000e"
+  #subnet_id     = "subnet-009732771798c000e"
+  subnet_id     = var.subnet_id
   vpc_security_group_ids = ["${aws_security_group.permitir_ssh.id}"]
   key_name      = "key_matheus_dev_ubunto"
   
