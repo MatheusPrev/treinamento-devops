@@ -1,5 +1,5 @@
-output "outvpc_id" {
-  value = aws_vpc.moduleVPC.id
+output "vpc_id" {
+  value = aws_vpc.my_vpc.id
 }
 
 #output "subnet_id" {
