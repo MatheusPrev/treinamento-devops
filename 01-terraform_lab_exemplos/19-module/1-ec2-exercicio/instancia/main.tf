@@ -4,10 +4,10 @@ terraform {
 
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = var.tamanho
-  subnet_id     = var.subnet_id
+  instance_type = "t2.micro"
+  subnet_id     = "subnet-009732771798c000e"
   vpc_security_group_ids = ["${aws_security_group.permitir_ssh.id}"]
-  count         = var.quantidade
+  count         = "1"
   key_name      = "key_matheus_dev_ubunto"
   
   associate_public_ip_address = true
@@ -18,6 +18,6 @@ resource "aws_instance" "web" {
   }
     
   tags = {
-    Name = "ec2-matheus-${var.nome}-${count.index}"
+    Name = "ec2-matheus-deploy-${count.index}"
   }
 }
