@@ -7,7 +7,7 @@ module "criar_vpc" {
   #nome = "deploy"
 }
 
-#module "criar_instancia" {
-  #source = "./instancia"
-  #nome = "deploy"
-#}
+module "criar_instancia" {
+  source = "./instancia"
+  nome = "deploy"
+}
