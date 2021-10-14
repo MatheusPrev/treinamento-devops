@@ -1,7 +1,7 @@
 resource "aws_security_group" "permitir_ssh" {
   name        = "matheus_sg_terraform_ssh1"
   description = "Permitindo acesso ssh para as maquinas terraform"
-  vpc_id      = "vpc-0b85884576e0bb066"
+  vpc_id      = var.vpc_id
 
   ingress = [
     {
