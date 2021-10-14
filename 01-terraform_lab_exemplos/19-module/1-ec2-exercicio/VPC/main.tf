@@ -3,17 +3,17 @@ resource "aws_vpc" "my_vpc" {
   enable_dns_hostnames = true
 
   tags = {
-    Name = "TerraformVPCPublicSubnet"
+    Name = "MatheusTerraformVPC"
   }
 }
 
 resource "aws_subnet" "my_subnet" {
   vpc_id            = aws_vpc.my_vpc.id
   cidr_block        = "172.17.0.0/16"
-  availability_zone = "us-east-1a"
+  availability_zone = "sa-east-1a"
 
   tags = {
-    Name = "tf-lab-danilo-subnet"
+    Name = "matheus_sub_terraform"
   }
 }
 
@@ -21,7 +21,7 @@ resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.my_vpc.id
 
   tags = {
-    Name = "aws_internet_gateway_terraform"
+    Name = "matheus_ig_terraform"
   }
 }
 
@@ -47,7 +47,7 @@ resource "aws_route_table" "rt_terraform" {
   ]
 
   tags = {
-    Name = "route_table_terraform"
+    Name = "matheus_rt_terraform"
   }
 }
 
