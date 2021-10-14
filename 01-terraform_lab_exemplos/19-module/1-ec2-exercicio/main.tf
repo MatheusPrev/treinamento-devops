@@ -4,7 +4,7 @@ provider "aws" {
 
 module "criar_vpc" {
   source = "./VPC"
-  nome = "deploy"
+  #nome = "deploy"
 }
 
 #module "criar_instancia" {
