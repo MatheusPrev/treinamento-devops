@@ -14,7 +14,7 @@ resource "aws_security_group" "permitir_ssh" {
       prefix_list_ids  = null
       security_groups  = null
       self             = null
-    }
+    },
     {
       description      = "Liberando porta 80"
       from_port        = 80
