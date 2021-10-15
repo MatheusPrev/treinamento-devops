@@ -14,17 +14,6 @@ resource "aws_security_group" "permitir_ssh" {
       prefix_list_ids  = null
       security_groups  = null
       self             = null
-    },
-    {
-      description      = "Liberando http"
-      from_port        = 80
-      to_port          = 80
-      protocol         = "tcp"
-      cidr_blocks      = ["0.0.0.0/0"]
-      ipv6_cidr_blocks = ["::/0"]
-      prefix_list_ids  = null
-      security_groups  = null
-      self             = null
     }
   ]
 
