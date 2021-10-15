@@ -1,3 +1,34 @@
 - hosts: all
-  tasks:
-    - shell: "echo 'escrevendo algo no servidor' >> teste.txt"
+  tasks:  
+    - name: "Roda: sudo apt update"
+      become: yes
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400 #Um dia
+    
+    - name: "Instala pacotes em lote"
+      apt:
+        name: "{{ item }}"
+        state: latest
+      become: yes # roda com sudo
+      with_items:
+        - php7.4
+        - apache2
+        - libapache2-mod-php7.4
+        - php-mysql
+        - php-curl
+        - mysql-server
+        - python3-pycurl
+        - python3-mysqldb
+        - unzip
+
+    - name: "Fazendo download do wordpress"
+      get_url:
+        url: "https://br.wordpress.org/latest-pt_BR.tar.gz"
+        dest: "/tmp/wordpress.tar.gz"
+
+    - shell: ls -la /tmp/wordpress.tar.gz
+      register: ps
+    - debug:
+        msg: "Verifica se fez o download: '{{ ps.stdout_lines }}' "
