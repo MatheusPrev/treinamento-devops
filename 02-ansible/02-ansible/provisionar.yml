@@ -1,7 +1,14 @@
 - hosts: all
   tasks:
-    - name: "Instalando apache com sudo no servidor"
+    - name: "Roda: sudo apt update"
+      become: yes
       apt:
-        name: "apache2"
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400 #Um dia
+    
+    - name: Instalando apache com sudo no servidor
+      apt:
+        name: apache2
         state: latest
       become: yes # permite rodar como sudo
