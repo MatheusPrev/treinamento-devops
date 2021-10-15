@@ -16,10 +16,10 @@
         - nginx
         - unzip
 
-    #- name: "Fazendo downlaod do wordpress"
-      #get_url:
-        #url: "https://br.wordpress.org/latest-pt_BR.tar.gz"
-        #dest: "/tmp/wordpress.tar.gz"
+    - name: "Fazendo downlaod do tema"
+      get_url:
+        url: "https://github.com/startbootstrap/startbootstrap-sb-admin-2/archive/gh-pages.zip"
+        dest: "/tmp/tema.zip"
     
     #- name: "Fazendo descompactação dos arquivos do WP"
       #unarchive:
