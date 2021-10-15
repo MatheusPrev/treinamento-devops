@@ -18,6 +18,6 @@ resource "aws_instance" "web" {
   }
     
   tags = {
-    Name = "ec2-matheus-deploy-1"
+    Name = "ec2-matheus-exercicio_ansible"
   }
 }
