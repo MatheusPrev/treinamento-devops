@@ -38,6 +38,7 @@ resource "aws_instance" "workers" {
   instance_type = "t2.micro"
   key_name      = "key_matheus_dev_ubunto"
   subnet_id     = "subnet-009732771798c000e"
+  associate_public_ip_address = true
   root_block_device {
     volume_size = 8
     encrypted = true
@@ -54,7 +55,7 @@ resource "aws_security_group" "acessos_master" {
   name        = "acessos_master_matheus"
   description = "acessos_workers inbound traffic"
   vpc_id      = "vpc-0b85884576e0bb066"
-
+  associate_public_ip_address = true
   ingress = [
     {
       description      = "SSH from VPC"
@@ -142,7 +143,7 @@ resource "aws_security_group" "acessos_workers" {
 # terraform refresh para mostrar o ssh
 output "maquina_master" {
   value = [
-    "master - ${aws_instance.maquina_master.public_ip} - ssh -i ~/ssh/id_rsa ubuntu@${aws_instance.maquina_master.public_dns}"
+    "master - ${aws_instance.maquina_master.public_ip} - ssh -i ~/ssh/id_rsa ubuntu@${aws_instance.maquina_master.private_dns}"
   ]
 }
 
@@ -150,6 +151,6 @@ output "maquina_master" {
 output "aws_instance_e_ssh" {
   value = [
     for key, item in aws_instance.workers :
-      "worker ${key+1} - ${item.public_ip} - ssh -i ~/.ssh/id_rsa ubuntu@${item.public_dns}"
+      "worker ${key+1} - ${item.public_ip} - ssh -i ~/.ssh/id_rsa ubuntu@${item.private_dns}"
   ]
 }
