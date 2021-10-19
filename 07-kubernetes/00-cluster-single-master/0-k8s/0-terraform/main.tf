@@ -80,6 +80,17 @@ resource "aws_security_group" "acessos_master" {
       security_groups: null,
       self: null
     },
+    {
+      cidr_blocks      = []
+      description      = ""
+      from_port        = 0
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      protocol         = "-1"
+      security_groups  = ["sg-002a97fcc1b52b800"]
+      self             = false
+      to_port          = 0
+    }
   ]
 
   egress = [
@@ -119,6 +130,17 @@ resource "aws_security_group" "acessos_workers" {
       security_groups: null,
       self: null
     },
+    {
+      cidr_blocks      = []
+      description      = ""
+      from_port        = 0
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      protocol         = "-1"
+      security_groups  = ["sg-0e04d843c1167fa99"]
+      self             = false
+      to_port          = 0
+    }
   ]
 
   egress = [
