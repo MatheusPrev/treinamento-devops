@@ -48,6 +48,7 @@ resource "aws_instance" "workers" {
 resource "aws_security_group" "acessos_master" {
   name        = "acessos_master_matheus"
   description = "acessos_workers inbound traffic"
+  vpc_id      = "vpc-0b85884576e0bb066"
 
   ingress = [
     {
@@ -97,6 +98,7 @@ resource "aws_security_group" "acessos_master" {
 resource "aws_security_group" "acessos_workers" {
   name        = "acessos_workers_matheus"
   description = "acessos_workers inbound traffic"
+  vpc_id      = "vpc-0b85884576e0bb066"
 
   ingress = [
     {
