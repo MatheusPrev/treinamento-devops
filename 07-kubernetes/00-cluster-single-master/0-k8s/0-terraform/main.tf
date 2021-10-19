@@ -37,6 +37,10 @@ resource "aws_instance" "workers" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
   key_name      = "Itau_treinamento"
+  root_block_device {
+    volume_size = 8
+    encrypted = true
+  }
   tags = {
     Name = "matheus-cluster-kubernetes-${count.index}"
   }
