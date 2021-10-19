@@ -46,7 +46,7 @@ resource "aws_instance" "workers" {
 
 
 resource "aws_security_group" "acessos_master" {
-  name        = "acessos_master"
+  name        = "acessos_master_matheus"
   description = "acessos_workers inbound traffic"
 
   ingress = [
@@ -55,7 +55,7 @@ resource "aws_security_group" "acessos_master" {
       from_port        = 22
       to_port          = 22
       protocol         = "tcp"
-      cidr_blocks      = ["${chomp(data.http.myip.body)}/32"]
+      cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = ["::/0"]
       prefix_list_ids = null,
       security_groups: null,
@@ -66,11 +66,7 @@ resource "aws_security_group" "acessos_master" {
       from_port        = 6443
       to_port          = 6443
       protocol         = "tcp"
-      cidr_blocks      = [
-        "${chomp(data.http.myip.body)}/32",
-        "${aws_instance.workers[0].private_ip}/32",
-        "${aws_instance.workers[1].private_ip}/32",
-      ]
+      cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = ["::/0"]
       prefix_list_ids = null,
       security_groups: null,
@@ -99,7 +95,7 @@ resource "aws_security_group" "acessos_master" {
 
 
 resource "aws_security_group" "acessos_workers" {
-  name        = "acessos_workers"
+  name        = "acessos_workers_matheus"
   description = "acessos_workers inbound traffic"
 
   ingress = [
@@ -108,7 +104,7 @@ resource "aws_security_group" "acessos_workers" {
       from_port        = 22
       to_port          = 22
       protocol         = "tcp"
-      cidr_blocks      = ["${chomp(data.http.myip.body)}/32"]
+      cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = ["::/0"]
       prefix_list_ids = null,
       security_groups: null,
@@ -139,7 +135,7 @@ resource "aws_security_group" "acessos_workers" {
 # terraform refresh para mostrar o ssh
 output "maquina_master" {
   value = [
-    "master - ${aws_instance.maquina_master.public_ip} - ssh -i ~/projetos/devops/id_rsa_itau_treinamento ubuntu@${aws_instance.maquina_master.public_dns}"
+    "master - ${aws_instance.maquina_master.public_ip} - ssh -i ~/ssh/id_rsa ubuntu@${aws_instance.maquina_master.public_dns}"
   ]
 }
 
@@ -147,6 +143,6 @@ output "maquina_master" {
 output "aws_instance_e_ssh" {
   value = [
     for key, item in aws_instance.workers :
-      "worker ${key+1} - ${item.public_ip} - ssh -i ~/projetos/devops/id_rsa_itau_treinamento ubuntu@${item.public_dns}"
+      "worker ${key+1} - ${item.public_ip} - ssh -i ~/.ssh/id_rsa ubuntu@${item.public_dns}"
   ]
 }
