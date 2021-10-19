@@ -20,6 +20,7 @@ resource "aws_instance" "maquina_master" {
   instance_type = "t2.medium"
   key_name      = "key_matheus_dev_ubunto"
   subnet_id     = "subnet-009732771798c000e"
+  associate_public_ip_address = true
   tags = {
     Name = "matheus-cluster-kubernetes-master"
   }
@@ -55,7 +56,7 @@ resource "aws_security_group" "acessos_master" {
   name        = "acessos_master_matheus"
   description = "acessos_workers inbound traffic"
   vpc_id      = "vpc-0b85884576e0bb066"
-  associate_public_ip_address = true
+  
   ingress = [
     {
       description      = "SSH from VPC"
