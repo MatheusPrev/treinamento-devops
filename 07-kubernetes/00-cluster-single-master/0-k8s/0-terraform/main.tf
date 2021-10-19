@@ -1,10 +1,10 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "sa-east-1"
 }
 
-data "http" "myip" {
-  url = "http://ipv4.icanhazip.com" # outra opção "https://ifconfig.me"
-}
+#data "http" "myip" {
+  #url = "http://ipv4.icanhazip.com" # outra opção "https://ifconfig.me"
+#}
 
 data "aws_ami" "ubuntu" {
   most_recent = true
@@ -21,7 +21,11 @@ resource "aws_instance" "maquina_master" {
   instance_type = "t2.medium"
   key_name      = "Itau_treinamento"
   tags = {
-    Name = "maquina-cluster-kubernetes-master"
+    Name = "matheus-cluster-kubernetes-master"
+  }
+  root_block_device {
+    volume_size = 8
+    encrypted = true
   }
   vpc_security_group_ids = ["${aws_security_group.acessos_master.id}"]
   depends_on = [
@@ -34,7 +38,7 @@ resource "aws_instance" "workers" {
   instance_type = "t2.micro"
   key_name      = "Itau_treinamento"
   tags = {
-    Name = "maquina-cluster-kubernetes-${count.index}"
+    Name = "matheus-cluster-kubernetes-${count.index}"
   }
   vpc_security_group_ids = ["${aws_security_group.acessos_workers.id}"]
   count         = 2
